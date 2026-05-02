@@ -1,6 +1,6 @@
 # Options — Greenfield Project Framework
 
-A reusable workflow for taking a project from "vague idea" to "shippable v1 spec + clean repo, ready to build." Captured from the Zetaprime planning session (2026-05-02) and kept here so the next project doesn't re-discover it.
+A reusable workflow for taking a project from "vague idea" to "shippable v1 spec + clean repo, ready to build." Kept here so the next project doesn't re-discover it.
 
 When you start a new project, follow this.
 
@@ -133,7 +133,7 @@ Then:
 | File | What it is |
 |------|------------|
 | `README.md` | This guide. The one you actually read. |
-| `PROMPTS.md` | Verbatim prompts from a real session (Zetaprime, 2026-05-02). Reference example. |
+| `PROMPTS.md` | Verbatim prompts from a real planning session. Reference example for the prompt cadence. |
 | `PLAYBOOK.md` | *(later)* Distilled framework — lessons, anti-patterns, quickstart bash. |
 
 After running this workflow on a new project, append new lessons back to this repo. It's a living artifact.
