@@ -1,4 +1,4 @@
-# Options — Greenfield Project Framework
+# /GREEN — Greenfield Project Framework
 
 A reusable workflow for taking a project from "vague idea" to "shippable v1 spec + clean repo, ready to build." Kept here so the next project doesn't re-discover it.
 
@@ -18,6 +18,33 @@ cd ~/Github/Settings && ./install.sh
 Then type `/greenfield` in any new project directory to kick off the workflow.
 
 **Prereq:** gstack must be installed separately — the framework calls `/office-hours`, `/plan-ceo-review`, `/plan-eng-review`, `/plan-design-review` from gstack.
+
+---
+
+## Git cheat sheet
+
+**Connect existing local folder ↔ existing GitHub repo:**
+```bash
+cd ~/Github/<folder>
+git init                              # safe to run; no-op if already a repo
+git add .
+git commit -m "init"
+git remote add origin <github-url>    # if a wrong remote already exists: git remote set-url origin <url>
+git push -u origin main
+```
+Get `<github-url>` from github.com → green **Code** button → copy HTTPS or SSH URL.
+
+**Routine commit + push:**
+```bash
+git add .
+git commit -m "<short imperative msg>"
+git push
+```
+
+**Pull from remote:**
+```bash
+git pull
+```
 
 ---
 

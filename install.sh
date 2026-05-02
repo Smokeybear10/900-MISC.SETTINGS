@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the greenfield framework into ~/.claude/
+# Install the GREEN framework into ~/.claude/
 # Idempotent: safe to run multiple times.
 set -e
 
@@ -13,7 +13,7 @@ COMMAND_DST="$COMMANDS_DIR/greenfield.md"
 MARKER_BEGIN="<!-- greenfield-framework:begin -->"
 MARKER_END="<!-- greenfield-framework:end -->"
 
-echo "Installing greenfield framework from: $REPO_DIR"
+echo "Installing GREEN framework from: $REPO_DIR"
 echo ""
 
 mkdir -p "$COMMANDS_DIR"
@@ -41,7 +41,7 @@ else
     cat "$SNIPPET"
     printf '%s\n' "$MARKER_END"
   } >> "$GLOBAL_CLAUDE"
-  echo "  CLAUDE.md: appended greenfield section to $GLOBAL_CLAUDE"
+  echo "  CLAUDE.md: appended GREEN section to $GLOBAL_CLAUDE"
 fi
 
 echo ""
