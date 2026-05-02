@@ -1,166 +1,112 @@
-# /GREEN — Greenfield Project Framework
+# /GREEN
 
-A reusable workflow for taking a project from "vague idea" to "shippable v1 spec + clean repo, ready to build." Kept here so the next project doesn't re-discover it.
+Project bootstrap workflow for Claude Code.
 
-When you start a new project, follow this.
-
----
-
-## Install (new machine)
+## Install
 
 ```bash
-git clone <this-repo-url> ~/Github/Settings
+git clone <repo> ~/Github/Settings
 cd ~/Github/Settings && ./install.sh
 ```
 
-`install.sh` symlinks `~/.claude/commands/greenfield.md` → the file in this repo (so edits stay in git) and appends a pointer to your global `~/.claude/CLAUDE.md`. Idempotent — safe to re-run.
+Adds `/greenfield` to `~/.claude/commands/` and a pointer to `~/.claude/CLAUDE.md`. Idempotent.
 
-Then type `/greenfield` in any new project directory to kick off the workflow.
+Requires gstack.
 
-**Prereq:** gstack must be installed separately — the framework calls `/office-hours`, `/plan-ceo-review`, `/plan-eng-review`, `/plan-design-review` from gstack.
+## Workflow
 
----
+Type `/greenfield` in a new project.
 
-## Git cheat sheet
+1. `/office-hours`
+2. Write `DESIGN.md` from the office-hours output (250–450 lines)
+3. `/plan-ceo-review`
+4. `/plan-eng-review`
+5. `/plan-design-review`
+6. Reconcile `DESIGN.md` against the office-hours doc
+7. Write `PLAYBOOK.md` and `PROMPTS.md` for the new project
+8. Kill gates: name, demand validation
+9. Cleanup: inspect dir, rename folder, lock dev port
 
-**Connect existing local folder ↔ existing GitHub repo:**
+## Prompts
+
+```
+/effort
+
+/office-hours
+# output: ~/.gstack/projects/{slug}/*.md
+
+# design doc
+make a design doc based on the /office-hours output at <path>
+[paste thesis: one-liner, gap, audience, primitives, modes, voice, MVP]
+
+# reviews
+/plan-ceo-review
+Run /plan-eng-review now
+Run /plan-design-review now
+
+# reconcile
+Compare DESIGN.md against the /office-hours doc. Surface anything missing.
+Fold all [N] items into DESIGN.md
+
+# pre-build
+what gstack stuff should i use now
+Name tentatively is X. friends already in.
+localhost only, port {port}
+
+# scaffold
+get started with scaffolding
+```
+
+When scaffolding, Claude inspects the directory first. If a scaffold already exists, pick option C (rename folder to product name, move contents up, single git).
+
+## Reusable prompts
+
+Idea validation and planning stress-test prompts (role-prompt format) live in [`PROMPTS.md`](./PROMPTS.md).
+
+## Git
+
+Connect existing folder to existing GitHub repo:
+
 ```bash
 cd ~/Github/<folder>
-git init                              # safe to run; no-op if already a repo
+git init
 git add .
 git commit -m "init"
-git remote add origin <github-url>    # if a wrong remote already exists: git remote set-url origin <url>
+git remote add origin <url>          # or set-url if remote exists
 git push -u origin main
 ```
-Get `<github-url>` from github.com → green **Code** button → copy HTTPS or SSH URL.
 
-**Routine commit + push:**
+URL: github.com → Code button.
+
+Routine:
+
 ```bash
 git add .
-git commit -m "<short imperative msg>"
+git commit -m "msg"
 git push
 ```
 
-**Pull from remote:**
-```bash
-git pull
-```
+## Decision defaults
 
----
+| Skill | Default |
+|-------|---------|
+| `/plan-ceo-review` mode | SELECTIVE EXPANSION (greenfield), HOLD (refactors), REDUCTION (>15-file plans) |
+| `/plan-ceo-review` audience | Broader first if niche is saturated |
+| `/plan-ceo-review` cherry-picks | Hours not days, load-bearing only |
+| `/plan-eng-review` scope reduction | Snap back to /office-hours |
+| `/plan-eng-review` alternatives | Boring approach unless there's a real reason |
+| `/plan-design-review` mockups | Wedge screens only |
 
-## The workflow (9 steps)
+## Gotchas
 
-```
-1. /office-hours              — diagnostic, premise challenge, design doc draft
-2. write DESIGN.md            — based on the /office-hours output, not from scratch
-3. /plan-ceo-review           — scope, audience, ambition; cherry-pick expansions
-4. /plan-eng-review           — architecture, schema, anti-cheat, tests, perf
-5. /plan-design-review        — IA, state coverage, journey, mockups
-6. reconcile DESIGN.md vs /office-hours doc   ← easy to skip; don't
-7. capture the prompts        — write PLAYBOOK.md + PROMPTS.md
-8. pre-build kill gates       — naming, demand validation
-9. cleanup before first code  — inspect dir state, rename to product name, lock port
-```
+- Run `/office-hours` before any review skill.
+- Reconcile (step 6) is easy to forget; the review chain drifts.
+- `ls -la` before scaffolding (a scaffold might already exist).
+- Rename folder to product name before the first commit.
+- Lock the dev port at scaffold time.
 
-Each step compounds on the last. **Step 6 is the one easiest to forget.** Step 9 is the one you regret skipping when your folder name doesn't match the product name in three months.
+## Files
 
----
-
-## The prompts to type (chronological)
-
-### Setup (once per session)
-
-> `/effort`
-
-Per-session toggle to max effort. Use at the start of any high-stakes session.
-
-### 1. Office hours
-
-> `/office-hours`
-
-Diagnostic. Produces `~/.gstack/projects/{slug}/{user}-{branch}-design-{datetime}.md`.
-
-### 2. Design doc
-
-> make a design doc based on the /office-hours output at `~/.gstack/projects/{slug}/...`
->
-> \[paste full thesis as one block\]
-
-Thesis should cover: one-line product, why it exists / the gap, audience, core primitives, game loops, modes, gamification voice, technical shape, MVP cut. Claude writes `DESIGN.md` at repo root. Target ~250–450 lines.
-
-### 3–5. Review chain
-
-> `/plan-ceo-review`
-
-Then when prompted:
-
-> Run /plan-eng-review now
-
-Then:
-
-> Run /plan-design-review now
-
-Each surfaces decisions via AskUserQuestion. See cheat sheet below.
-
-### 6. Reconcile (don't skip)
-
-> Compare DESIGN.md against the /office-hours doc at `~/.gstack/projects/{slug}/...`. Surface anything in /office-hours that's missing from DESIGN.md.
-
-Then:
-
-> Fold all \[N\] items into DESIGN.md
-
-### 7. Capture the framework
-
-> make PLAYBOOK.md and PROMPTS.md capturing this session
-
-### 8. Pre-build kill gates
-
-> what gstack stuff should i use now
-
-(Claude: pick a name, run kill gates.)
-
-> Name tentatively is X. friends already in.
-> no need to make the app rn i just want to do localhost
-> i want this to be localhost {port} default
-
-### 9. Scaffolding (with inspection)
-
-> get started with scaffolding
-
-**Critical:** Claude inspects the dir state FIRST. If a scaffold already exists (you forgot you ran `create-next-app` last night), Claude halts and presents cleanup options A/B/C. Pick **C** (rename to product name, move scaffold up, single git) unless the parent dir is already correct.
-
----
-
-## Decision-point cheat sheet
-
-| Skill | Question | Default |
-|-------|----------|---------|
-| /plan-ceo-review | Mode selection | SELECTIVE EXPANSION (greenfield); HOLD (refactors); REDUCTION (>15-file plans) |
-| /plan-ceo-review | Audience priority | Flip to broader audience first if niche is saturated; paid tier on top |
-| /plan-ceo-review | Cherry-pick expansions | Add to MVP only if marginal cost is hours, not days, AND load-bearing for the wedge |
-| /plan-eng-review | Scope reduction (complexity triggered) | Snap back to /office-hours scope |
-| /plan-eng-review | Implementation alternatives | Pick the boring [Layer 1] approach unless there's a real reason for an innovation token |
-| /plan-design-review | Mockup scope | The 1–2 screens that ARE the wedge moment; spec the rest inline |
-
----
-
-## Don't skip these
-
-- **/office-hours first.** The diagnostic catches premise problems no review skill can recover.
-- **Reconcile (step 6).** The 3-review chain drifts. The reconcile catches what it missed.
-- **Inspect the dir before scaffolding.** You may have already scaffolded last night and forgot. Always `ls -la` first.
-- **Rename folder to product name BEFORE the first commit.** Cheap now, expensive in 3 months.
-- **Lock the dev port at scaffold time.** Avoids OAuth callback drift.
-
----
-
-## Files in this repo
-
-| File | What it is |
-|------|------------|
-| `README.md` | This guide. The one you actually read. |
-| `PROMPTS.md` | Verbatim prompts from a real planning session. Reference example for the prompt cadence. |
-| `PLAYBOOK.md` | *(later)* Distilled framework — lessons, anti-patterns, quickstart bash. |
-
-After running this workflow on a new project, append new lessons back to this repo. It's a living artifact.
+- `README.md` — this file
+- `PLAYBOOK.md` — lessons, anti-patterns
+- `PROMPTS.md` — verbatim prompts from a real session

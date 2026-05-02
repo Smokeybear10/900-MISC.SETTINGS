@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Install the GREEN framework into ~/.claude/
 # Idempotent: safe to run multiple times.
+# Symlinks every .md in .claude/commands/ into ~/.claude/commands/.
 set -e
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -8,8 +9,7 @@ CLAUDE_DIR="$HOME/.claude"
 COMMANDS_DIR="$CLAUDE_DIR/commands"
 GLOBAL_CLAUDE="$CLAUDE_DIR/CLAUDE.md"
 SNIPPET="$REPO_DIR/.claude/CLAUDE.md.snippet"
-COMMAND_SRC="$REPO_DIR/.claude/commands/greenfield.md"
-COMMAND_DST="$COMMANDS_DIR/greenfield.md"
+COMMANDS_SRC_DIR="$REPO_DIR/.claude/commands"
 MARKER_BEGIN="<!-- greenfield-framework:begin -->"
 MARKER_END="<!-- greenfield-framework:end -->"
 
@@ -18,18 +18,25 @@ echo ""
 
 mkdir -p "$COMMANDS_DIR"
 
-# 1. Symlink /greenfield slash command into ~/.claude/commands/
-if [ -L "$COMMAND_DST" ] && [ "$(readlink "$COMMAND_DST")" = "$COMMAND_SRC" ]; then
-  echo "  /greenfield: already symlinked"
-else
-  if [ -e "$COMMAND_DST" ]; then
-    backup="$COMMAND_DST.bak.$(date +%s)"
-    mv "$COMMAND_DST" "$backup"
-    echo "  /greenfield: existing file backed up to $backup"
+# 1. Symlink every command in .claude/commands/ into ~/.claude/commands/
+shopt -s nullglob
+for src in "$COMMANDS_SRC_DIR"/*.md; do
+  filename=$(basename "$src")
+  cmdname="${filename%.md}"
+  dst="$COMMANDS_DIR/$filename"
+
+  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+    echo "  /$cmdname: already symlinked"
+  else
+    if [ -e "$dst" ]; then
+      backup="$dst.bak.$(date +%s)"
+      mv "$dst" "$backup"
+      echo "  /$cmdname: existing file backed up to $backup"
+    fi
+    ln -sf "$src" "$dst"
+    echo "  /$cmdname: symlinked → $src"
   fi
-  ln -sf "$COMMAND_SRC" "$COMMAND_DST"
-  echo "  /greenfield: symlinked → $COMMAND_SRC"
-fi
+done
 
 # 2. Append snippet to global CLAUDE.md (idempotent via markers)
 touch "$GLOBAL_CLAUDE"
@@ -45,7 +52,7 @@ else
 fi
 
 echo ""
-echo "Done. Type /greenfield in any new project to start the workflow."
+echo "Done."
 echo ""
 echo "Note: gstack must also be installed for the underlying skills"
 echo "(/office-hours, /plan-ceo-review, /plan-eng-review, /plan-design-review)."
