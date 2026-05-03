@@ -4,7 +4,7 @@ import { SkillsDropdown } from './SkillsDropdown'
 
 export const metadata = {
   title: '/GREEN — Claude Code skills',
-  description: 'Two Claude Code skills for shipping new projects faster.',
+  description: 'Four Claude Code skills for shipping new projects faster and learning what you build on.',
 }
 
 export default function RootLayout({

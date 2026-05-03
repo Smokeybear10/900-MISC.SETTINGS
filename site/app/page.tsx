@@ -10,9 +10,9 @@ export default function Home() {
       <div className="hero-rule" />
 
       <p className="lead">
-        Two Claude Code skills. One walks you through bootstrapping a new
-        project. One reads your repo before writing a better prompt than you
-        would&apos;ve.
+        Four Claude Code skills. Bootstrap a new project, upgrade a rough
+        prompt, surface the gstack skills worth reaching for, and tutor you
+        through anything you want to actually understand.
       </p>
       <p className="subtag">
         For when &quot;figure it out as I go&quot; stops working.
@@ -52,6 +52,18 @@ export default function Home() {
             for, organized by when to use them.
           </p>
         </Link>
+        <Link className="card" href="/teach">
+          <div className="card-head">
+            <span className="num">04</span>
+            <span className="arrow" aria-hidden>→</span>
+          </div>
+          <h2>teach</h2>
+          <p>
+            Tutoring loop. Overview → deep dive → follow-ups you drive
+            yourself. Files, concepts, libraries — whatever you want to
+            understand to a strong degree.
+          </p>
+        </Link>
       </div>
 
       <section className="block">
@@ -61,8 +73,9 @@ export default function Home() {
 $ cd ~/Github/Settings && ./install.sh`}</code>
         </pre>
         <p className="muted">
-          Symlinks both slash commands into <code>~/.claude/commands/</code>.
-          Idempotent — re-run anytime.
+          Symlinks slash commands into <code>~/.claude/commands/</code> and
+          skill directories into <code>~/.claude/skills/</code>. Idempotent —
+          re-run anytime.
         </p>
       </section>
 

@@ -81,6 +81,10 @@ export function SkillsDropdown() {
             <span className="menu-name">menu</span>
             <span className="menu-desc">curated gstack skill list</span>
           </Link>
+          <Link href="/teach" role="menuitem" onClick={() => setOpen(false)}>
+            <span className="menu-name">teach</span>
+            <span className="menu-desc">tutoring loop, deep dive on anything</span>
+          </Link>
         </div>
       )}
     </div>
