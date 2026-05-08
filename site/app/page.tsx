@@ -10,9 +10,10 @@ export default function Home() {
       <div className="hero-rule" />
 
       <p className="lead">
-        Four Claude Code skills. Bootstrap a new project, upgrade a rough
-        prompt, surface the gstack skills worth reaching for, and tutor you
-        through anything you want to actually understand.
+        Five Claude Code skills. Bootstrap a new project, upgrade a rough
+        prompt, surface the gstack skills worth reaching for, tutor you
+        through anything you want to actually understand, and audit a project
+        for ship-readiness.
       </p>
       <p className="subtag">
         For when &quot;figure it out as I go&quot; stops working.
@@ -62,6 +63,19 @@ export default function Home() {
             Tutoring loop. Overview → deep dive → follow-ups you drive
             yourself. Files, concepts, libraries — whatever you want to
             understand to a strong degree.
+          </p>
+        </Link>
+        <Link className="card" href="/audit">
+          <div className="card-head">
+            <span className="num">05</span>
+            <span className="arrow" aria-hidden>→</span>
+          </div>
+          <h2>audit</h2>
+          <p>
+            Ship-readiness audit. 10 quality gates run sequentially — health,
+            qa, dogfood, security, web quality, perf regression, code review,
+            second opinion, visual polish, docs sync. Halts on dealbreakers,
+            verdict at the end.
           </p>
         </Link>
       </div>

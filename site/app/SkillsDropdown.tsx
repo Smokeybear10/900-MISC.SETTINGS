@@ -85,6 +85,10 @@ export function SkillsDropdown() {
             <span className="menu-name">teach</span>
             <span className="menu-desc">tutoring loop, deep dive on anything</span>
           </Link>
+          <Link href="/audit" role="menuitem" onClick={() => setOpen(false)}>
+            <span className="menu-name">audit</span>
+            <span className="menu-desc">10-gate ship-readiness sweep</span>
+          </Link>
         </div>
       )}
     </div>

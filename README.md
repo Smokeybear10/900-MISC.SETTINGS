@@ -1,6 +1,16 @@
 # /GREEN
 
-Project bootstrap workflow for Claude Code.
+Five Claude Code skills for a personal full-stack workflow: bootstrap a project, polish a prompt, surface the gstack skills worth reaching for, tutor through any subject, and audit for ship-readiness.
+
+## Skills
+
+| Skill | What it does |
+|-------|--------------|
+| `/greenfield` | 9-step bootstrap from idea to scaffolded repo with reconciled DESIGN.md + ARCHITECTURE.md |
+| `/prompt-engineer` | Rewrites a rough instruction into a Claude Code prompt informed by the actual repo state |
+| `/menu` | Curated index of the gstack skills actually worth reaching for, organized by when to use them |
+| `/teach` | Tutoring loop with classify → calibrate depth → teach → user-driven follow-ups |
+| `/audit` | Final ship-readiness audit. 10 quality gates, three tiers, halts on dealbreakers, ship verdict at the end |
 
 ## Install
 
@@ -9,9 +19,9 @@ git clone <repo> ~/Github/Settings
 cd ~/Github/Settings && ./install.sh
 ```
 
-Adds `/greenfield` to `~/.claude/commands/` and a pointer to `~/.claude/CLAUDE.md`. Idempotent.
+Symlinks every `skills/*/` into `~/.claude/skills/`, syncs `docs/RULES.md` into `~/.claude/CLAUDE.md`, and appends the `/GREEN` snippet. Idempotent.
 
-Requires gstack.
+Requires gstack for `/audit`'s underlying gates and `/greenfield`'s plan-review steps.
 
 ## Workflow
 
