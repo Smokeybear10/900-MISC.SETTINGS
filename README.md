@@ -184,7 +184,7 @@ When scaffolding, Claude inspects the directory first. If a scaffold already exi
 
 ## Reusable prompts
 
-Idea validation and planning stress-test prompts (role-prompt format) live in [`PROMPTS.md`](./PROMPTS.md).
+Idea validation and planning stress-test prompts (role-prompt format) live in [`docs/PROMPTS.md`](./docs/PROMPTS.md).
 
 ## Decision defaults
 
@@ -213,6 +213,9 @@ Idea validation and planning stress-test prompts (role-prompt format) live in [`
 ## Files
 
 - `README.md` — this file
-- `PLAYBOOK.md` — lessons, anti-patterns
-- `PROMPTS.md` — verbatim prompts from a real session
+- `docs/PLAYBOOK.md` — lessons, anti-patterns
+- `docs/PROMPTS.md` — verbatim prompts from a real session
+- `docs/RULES.md` — global rules synced into `~/.claude/CLAUDE.md` by `install.sh`
+- `skills/` — personal skills (audit, greenfield, menu, prompt-engineer, teach)
 - `templates/architecture/` — `ARCHITECTURE.md` and `index.html` skeletons (copied per project)
+- `site/` — Next.js landing page

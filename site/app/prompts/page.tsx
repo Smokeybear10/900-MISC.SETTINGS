@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Prompts() {
   const md = fs.readFileSync(
-    path.resolve(process.cwd(), '..', 'PROMPTS.md'),
+    path.resolve(process.cwd(), '..', 'docs', 'PROMPTS.md'),
     'utf-8'
   )
 

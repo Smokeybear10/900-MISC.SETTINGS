@@ -218,7 +218,7 @@ If the user mentioned a port lock or "localhost only" preference earlier in the 
 
 Suggest the user start with Lane 2 (drill engine / pure logic / business logic) first — usually no backend dependency. Lanes 1 (schema) and 4 (API routes) come after backend is provisioned.
 
-Cross-project lessons learned → append to `~/Github/Settings/PLAYBOOK.md` and commit. The Settings repo is a living artifact.
+Cross-project lessons learned → append to `~/Github/Settings/docs/PLAYBOOK.md` and commit. The Settings repo is a living artifact.
 
 ## Hard rules
 

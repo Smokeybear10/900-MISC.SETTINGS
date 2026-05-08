@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function Rules() {
   const md = fs.readFileSync(
-    path.resolve(process.cwd(), '..', 'RULES.md'),
+    path.resolve(process.cwd(), '..', 'docs', 'RULES.md'),
     'utf-8'
   )
 
