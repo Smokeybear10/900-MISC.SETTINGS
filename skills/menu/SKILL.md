@@ -9,7 +9,21 @@ description: |
 allowed-tools: []
 ---
 
-Show the user this curated list of gstack skills, organized by category and labeled with both *when to use* and *what it does*. Present it cleanly — no extra commentary, no follow-up questions, no suggestions unless the user asks.
+Show the user this curated list of skills — both the personal `/GREEN` skills and the gstack ones — organized by category and labeled with both *when to use* and *what it does*. Present it cleanly — no extra commentary, no follow-up questions, no suggestions unless the user asks.
+
+### Personal /GREEN skills
+
+**`/greenfield`** — *Use when starting a brand new project from a vague idea.* Walks the 9-step bootstrap: `/office-hours` → `DESIGN.md` → CEO/eng/design plan reviews → architecture synthesis → design shotgun → reconciliation → scaffold. Built around the step you'll most want to skip.
+
+**`/prompt-engineer`** — *Use when you have a rough instruction and want a sharper Claude Code prompt.* Reads the actual repo first, asks up to four clarifying questions, then writes a prompt with verified file paths, framework-aware constraints, and explicit guardrails. No invented paths, no broad refactors.
+
+**`/teach`** — *Use when you want to actually understand something — a file, a concept, a library — instead of skim it.* Tutoring loop: overview → deep dive → user-driven follow-ups. Default depth is deep dive.
+
+**`/audit`** — *Use when you think a project is ready to ship and want a final check.* 10 quality gates run sequentially — `/health`, `/qa`, dogfood, `/cso`, web quality, `/benchmark`, `/review`, `/codex`, `/design-review`, `/document-release`. Halts on dealbreakers, ship verdict at the end. Three tiers: quick / standard / full.
+
+**`/design-html`** — *Use when you have an approved mockup, a plan, or a description and want real HTML/CSS.* Pretext-native output — text reflows, heights compute, layouts are dynamic. 30KB overhead, zero deps. Smart input detection picks up artifacts from `/design-shotgun`, `/plan-ceo-review`, or `/plan-design-review`.
+
+**`/menu`** — *Use when you forgot which skill does what.* Prints this list — every skill you actually reach for, by phase, with when-to-use and what-each-does.
 
 ### Idea + planning
 

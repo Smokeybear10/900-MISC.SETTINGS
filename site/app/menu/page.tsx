@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'menu — /GREEN',
   description:
-    'Curated list of the gstack skills actually used, organized by phase, with when-to-use + what-each-does.',
+    'Curated list of the gstack skills actually used + the personal /GREEN skills, organized by phase, with when-to-use + what-each-does.',
 }
 
 export default function Menu() {
@@ -9,27 +9,92 @@ export default function Menu() {
     <main>
       <h1>menu</h1>
       <p className="lead">
-        Curated list of the gstack skills actually worth reaching for —
-        organized by phase, with when-to-use and what-each-does. Type{' '}
+        Curated list of every skill actually worth reaching for — both the
+        personal <code>/GREEN</code> skills and the gstack ones — organized
+        by phase, with when-to-use and what-each-does. Type{' '}
         <code>/menu</code> in any project to print this in your terminal.
       </p>
 
       <h2>What it does</h2>
       <p>
-        Drops a clean, opinionated index of 16 gstack skills (out of 29) into
-        the chat — the ones used regularly. Each entry tells you{' '}
-        <em>when</em> to reach for the skill and <em>what</em> it actually
-        does in 1–2 sentences.
+        Drops a clean, opinionated index into the chat: the six personal{' '}
+        <code>/GREEN</code> skills plus 17 gstack skills (out of 29) — the
+        ones actually used regularly. Each entry tells you <em>when</em> to
+        reach for the skill and <em>what</em> it actually does in 1–2
+        sentences.
       </p>
       <p>
-        Excluded by default: <code>/careful</code>, <code>/codex</code>,{' '}
-        <code>/guard</code>, <code>/qa-only</code>, all Ship + deploy skills,
-        all Quality + ops skills. Edit{' '}
+        Excluded by default from the gstack list: <code>/careful</code>,{' '}
+        <code>/codex</code>, <code>/guard</code>, <code>/qa-only</code>,
+        all Ship + deploy skills, all Quality + ops skills. Edit{' '}
         <code>~/Github/Settings/.claude/commands/menu.md</code> to add or
         remove any.
       </p>
 
-      <h2>The 16 skills</h2>
+      <h2>Personal /GREEN skills</h2>
+
+      <p>
+        <strong>
+          <code>/greenfield</code>
+        </strong>{' '}
+        — <em>Use when starting a brand new project from a vague idea.</em>{' '}
+        Walks the 9-step bootstrap: <code>/office-hours</code> →{' '}
+        <code>DESIGN.md</code> → CEO/eng/design plan reviews → architecture
+        synthesis → design shotgun → reconciliation → scaffold. Built
+        around the step you&apos;ll most want to skip.
+      </p>
+      <p>
+        <strong>
+          <code>/prompt-engineer</code>
+        </strong>{' '}
+        — <em>Use when you have a rough instruction and want a sharper
+        Claude Code prompt.</em> Reads the actual repo first, asks up to
+        four clarifying questions, then writes a prompt with verified file
+        paths, framework-aware constraints, and explicit guardrails. No
+        invented paths, no broad refactors.
+      </p>
+      <p>
+        <strong>
+          <code>/teach</code>
+        </strong>{' '}
+        — <em>Use when you want to actually understand something — a file,
+        a concept, a library — instead of skim it.</em> Tutoring loop:
+        overview → deep dive → user-driven follow-ups. Default depth is
+        deep dive (you invoked this for a reason).
+      </p>
+      <p>
+        <strong>
+          <code>/audit</code>
+        </strong>{' '}
+        — <em>Use when you think a project is ready to ship and want a
+        final check.</em> 10 quality gates run sequentially —{' '}
+        <code>/health</code>, <code>/qa</code>, dogfood, <code>/cso</code>,
+        web quality, <code>/benchmark</code>, <code>/review</code>,{' '}
+        <code>/codex</code>, <code>/design-review</code>,{' '}
+        <code>/document-release</code>. Halts on dealbreakers, ship verdict
+        at the end. Three tiers: quick / standard / full.
+      </p>
+      <p>
+        <strong>
+          <code>/design-html</code>
+        </strong>{' '}
+        — <em>Use when you have an approved mockup, a plan, or a
+        description and want real HTML/CSS.</em> Pretext-native output —
+        text reflows, heights compute, layouts are dynamic. 30KB overhead,
+        zero deps. Smart input detection picks up artifacts from{' '}
+        <code>/design-shotgun</code>, <code>/plan-ceo-review</code>, or{' '}
+        <code>/plan-design-review</code>.
+      </p>
+      <p>
+        <strong>
+          <code>/menu</code>
+        </strong>{' '}
+        — <em>Use when you forgot which skill does what.</em> Prints this
+        page in your terminal — every skill you actually reach for, by
+        phase, with when-to-use and what-each-does.
+      </p>
+
+      <h2>The 17 gstack skills</h2>
 
       <h3>Idea + planning</h3>
       <p>
@@ -104,6 +169,18 @@ export default function Menu() {
         Designer&apos;s eye QA on the running site. Catches visual
         inconsistency, spacing, hierarchy, AI-slop patterns. Iteratively
         fixes and re-verifies with before/after screenshots.
+      </p>
+      <p>
+        <strong>
+          <code>/brand-kit</code>
+        </strong>{' '}
+        — <em>Use when a project needs an identity — name, mark, palette,
+        type, app icons.</em> Reads project context deeply, generates
+        THREE complete brand directions (different mark + palette + type
+        voice for each) side-by-side in <code>brand-explore.html</code>,
+        then commits to a single ~750-line <code>brand.html</code> with
+        the chosen direction. App icon mockups (iOS / macOS / Android /
+        browser), wordmark lockups, downloadable assets.
       </p>
 
       <h3>During build</h3>

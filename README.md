@@ -1,6 +1,6 @@
 # /GREEN
 
-Five Claude Code skills for a personal full-stack workflow: bootstrap a project, polish a prompt, surface the gstack skills worth reaching for, tutor through any subject, and audit for ship-readiness.
+Six Claude Code skills for a personal full-stack workflow: bootstrap a project, polish a prompt, tutor through any subject, audit for ship-readiness, finalize designs into real HTML, and surface the skills worth reaching for.
 
 ## Skills
 
@@ -8,9 +8,10 @@ Five Claude Code skills for a personal full-stack workflow: bootstrap a project,
 |-------|--------------|
 | `/greenfield` | 9-step bootstrap from idea to scaffolded repo with reconciled DESIGN.md + ARCHITECTURE.md |
 | `/prompt-engineer` | Rewrites a rough instruction into a Claude Code prompt informed by the actual repo state |
-| `/menu` | Curated index of the gstack skills actually worth reaching for, organized by when to use them |
 | `/teach` | Tutoring loop with classify → calibrate depth → teach → user-driven follow-ups |
 | `/audit` | Final ship-readiness audit. 10 quality gates, three tiers, halts on dealbreakers, ship verdict at the end |
+| `/design-html` | Design finalization. Approved mockup, plan, or description → production-quality Pretext-native HTML/CSS (text reflows, heights compute, layouts are dynamic) |
+| `/menu` | Curated index of the gstack skills actually worth reaching for + the personal /GREEN ones, organized by when to use them |
 
 ## Install
 
@@ -226,6 +227,6 @@ Idea validation and planning stress-test prompts (role-prompt format) live in [`
 - `docs/PLAYBOOK.md` — lessons, anti-patterns
 - `docs/PROMPTS.md` — verbatim prompts from a real session
 - `docs/RULES.md` — global rules synced into `~/.claude/CLAUDE.md` by `install.sh`
-- `skills/` — personal skills (audit, greenfield, menu, prompt-engineer, teach)
+- `skills/` — personal skills (audit, design-html, greenfield, menu, prompt-engineer, teach) plus brand-kit
 - `templates/architecture/` — `ARCHITECTURE.md` and `index.html` skeletons (copied per project)
 - `site/` — Next.js landing page

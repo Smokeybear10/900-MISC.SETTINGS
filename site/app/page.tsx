@@ -10,10 +10,10 @@ export default function Home() {
       <div className="hero-rule" />
 
       <p className="lead">
-        Five Claude Code skills. Bootstrap a new project, upgrade a rough
-        prompt, surface the gstack skills worth reaching for, tutor you
-        through anything you want to actually understand, and audit a project
-        for ship-readiness.
+        Six Claude Code skills. Bootstrap a new project, upgrade a rough
+        prompt, tutor you through anything, audit ship-readiness, finalize
+        designs into real HTML, and surface the gstack skills worth reaching
+        for.
       </p>
       <p className="subtag">
         For when &quot;figure it out as I go&quot; stops working.
@@ -42,20 +42,9 @@ export default function Home() {
             paths, no broad refactors, real constraints baked in.
           </p>
         </Link>
-        <Link className="card" href="/menu">
-          <div className="card-head">
-            <span className="num">03</span>
-            <span className="arrow" aria-hidden>→</span>
-          </div>
-          <h2>menu</h2>
-          <p>
-            Curated index of the 16 gstack skills actually worth reaching
-            for, organized by when to use them.
-          </p>
-        </Link>
         <Link className="card" href="/teach">
           <div className="card-head">
-            <span className="num">04</span>
+            <span className="num">03</span>
             <span className="arrow" aria-hidden>→</span>
           </div>
           <h2>teach</h2>
@@ -67,7 +56,7 @@ export default function Home() {
         </Link>
         <Link className="card" href="/audit">
           <div className="card-head">
-            <span className="num">05</span>
+            <span className="num">04</span>
             <span className="arrow" aria-hidden>→</span>
           </div>
           <h2>audit</h2>
@@ -76,6 +65,30 @@ export default function Home() {
             qa, dogfood, security, web quality, perf regression, code review,
             second opinion, visual polish, docs sync. Halts on dealbreakers,
             verdict at the end.
+          </p>
+        </Link>
+        <Link className="card" href="/design-html">
+          <div className="card-head">
+            <span className="num">05</span>
+            <span className="arrow" aria-hidden>→</span>
+          </div>
+          <h2>design-html</h2>
+          <p>
+            Design finalization. Turns approved mockups, CEO plans, or a
+            description into production-quality Pretext-native HTML/CSS.
+            Text actually reflows, heights compute, layouts are dynamic.
+            30KB overhead, zero deps.
+          </p>
+        </Link>
+        <Link className="card" href="/menu">
+          <div className="card-head">
+            <span className="num">06</span>
+            <span className="arrow" aria-hidden>→</span>
+          </div>
+          <h2>menu</h2>
+          <p>
+            Curated index of the gstack skills actually worth reaching for,
+            plus the /GREEN custom skills, organized by when to use them.
           </p>
         </Link>
       </div>
@@ -98,8 +111,9 @@ $ cd ~/Github/Settings && ./install.sh`}</code>
         <p className="muted">
           <strong>gstack</strong> — the underlying review skills{' '}
           <code>/office-hours</code>, <code>/plan-ceo-review</code>,{' '}
-          <code>/plan-eng-review</code>, <code>/plan-design-review</code> that
-          greenfield orchestrates.
+          <code>/plan-eng-review</code>, <code>/plan-design-review</code>,{' '}
+          <code>/design-shotgun</code> that greenfield orchestrates, and the
+          Pretext runtime that <code>/design-html</code> embeds.
         </p>
       </section>
 

@@ -77,10 +77,6 @@ export function SkillsDropdown() {
             <span className="menu-name">prompt-engineer</span>
             <span className="menu-desc">upgrade rough prompts</span>
           </Link>
-          <Link href="/menu" role="menuitem" onClick={() => setOpen(false)}>
-            <span className="menu-name">menu</span>
-            <span className="menu-desc">curated gstack skill list</span>
-          </Link>
           <Link href="/teach" role="menuitem" onClick={() => setOpen(false)}>
             <span className="menu-name">teach</span>
             <span className="menu-desc">tutoring loop, deep dive on anything</span>
@@ -88,6 +84,14 @@ export function SkillsDropdown() {
           <Link href="/audit" role="menuitem" onClick={() => setOpen(false)}>
             <span className="menu-name">audit</span>
             <span className="menu-desc">10-gate ship-readiness sweep</span>
+          </Link>
+          <Link href="/design-html" role="menuitem" onClick={() => setOpen(false)}>
+            <span className="menu-name">design-html</span>
+            <span className="menu-desc">finalize designs into real HTML/CSS</span>
+          </Link>
+          <Link href="/menu" role="menuitem" onClick={() => setOpen(false)}>
+            <span className="menu-name">menu</span>
+            <span className="menu-desc">curated gstack + GREEN skill list</span>
           </Link>
         </div>
       )}
